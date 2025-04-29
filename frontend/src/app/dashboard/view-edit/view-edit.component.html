@@ -25,7 +25,7 @@
         </div>
         <div class="action-button" *ngIf="editable && !isPublic && !isShared">
           <app-button color="PRIMARY"
-                      [disabled]="editDisabled"
+                      [disabled]="editDisabled || isPublic || isShared""
                       [closeOnClick]="false"
                       [actions]="editActions">
           </app-button>
