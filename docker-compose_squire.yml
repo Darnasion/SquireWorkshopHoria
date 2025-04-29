@@ -1,4 +1,3 @@
-version: '3.4'
 services:
   traefik:
     image: 'traefik:2.11.0'
@@ -43,7 +42,7 @@ services:
     environment:
       # Hardcoded environment variables, which should not be changed.
       SQUIRE_JDBC_USER: squire
-      SQUIRE_DB_URL: jdbc:mysql://database:3306/squire?autoReconnect=true&&useSSL=false&allowPublicKeyRetrieval=true&tinyInt1isBit=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'
+      SQUIRE_DB_URL: jdbc:mysql://database:3306/squire?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&tinyInt1isBit=false&sessionVariables=sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION'
       SQUIRE_LOG_PATH: ./Squire.log
       SQUIRE_IMAGES_PATH: ./images
       SQUIRE_USE_SSL: false
@@ -58,7 +57,7 @@ services:
       file: docker-compose.config.yml
       service: database
     container_name: 'Squire-Database'
-    command: --default-authentication-plugin=mysql_native_password
+    command: --default-authentication-plugin=caching_sha2_password
     restart: always
     hostname: database
     environment:
@@ -70,6 +69,8 @@ services:
       - db_data:/var/lib/mysql/
     networks:
       - internal
+    ports:
+      - "3306:3306"
 volumes:
   db_data:
     name: Squire-Database-Volume
