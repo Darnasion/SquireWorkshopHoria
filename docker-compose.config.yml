@@ -4,16 +4,16 @@ version: '3.4'
 
 x-common-variables: &common-variables
   # The password for the MySQL database user. Choose a long random string.
-  MYSQL_PASSWORD: YOUR_SECRET_HERE
+  MYSQL_PASSWORD: nxfjFBfiSLXqQxaaBQBMhekiBSr3PHokq46uEqH6X2LUKGiDUbVLYj4Z7WKLzoRcNKsPQWvzkzsk2n5f6JVGaqE2hbqq6yenSadWZte7P7pR4CenEGvmznz9R6YmaZMz
 
 services:
   backend:
     environment:
       <<: *common-variables
       # Choose a long random string for the JWT secret.
-      SQUIRE_JWT_SECRET: YOUR_SECRET_HERE
+      SQUIRE_JWT_SECRET: N5d5txwScDDSctJTukfS6A3pcmU7r7xmA7Hj3jmy3jjk2DrNyGXPTkZ5JKi7nmbN2gHvKwMGS8y4iTdAXDZxtnZt75dcMXHtT5WJWnpZkSarKDyCfy8XSc7sS7G5xn4Z
       # Choose a random string of the length 16, 24 or 32 for the ID secret.
-      SQUIRE_ID_SECRET: YOUR_SECRET_HERE
+      SQUIRE_ID_SECRET: p8R9hywhFJeLcbHp4sxyYx9SP7bjUDMu
 
       # Whether to allow creation of new user accounts
       # To disable signups, set this to 'false'
