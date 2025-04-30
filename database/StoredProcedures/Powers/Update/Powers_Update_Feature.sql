@@ -79,4 +79,4 @@ END;;
 
 DELIMITER ;
 
-CALL Powers_Update_Feature(265, 1, 'test-changed', 'test-changed-desc', 'ab');
+# CALL Powers_Update_Feature(265, 1, 'test-chanaaaged', 'test-changed-desc', 'ab');
