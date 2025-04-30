@@ -106,7 +106,7 @@ export class ViewEditComponent implements OnInit, OnChanges, OnDestroy {
     this.editActions = [];
     this.editActions.push(new ButtonAction('', this.translate.instant('Edit'), () => {
       this.edit();
-    })); ### Angepasst
+    },)); ### Angepasst
     ## }, this.editDisabled)); ###Ursprung
     if (!this.nested && this.versionInfo != null && this.versionInfo.authorVersion > this.versionInfo.version) {
       this.editActions.push(new ButtonAction('myStuff', this.translate.instant('Sharing.MyStuff.Update.Button'), () => {
