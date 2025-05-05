@@ -51,7 +51,8 @@ BEGIN
 
 #     START TRANSACTION;
 
-    SET valid = (SELECT user_id FROM powers WHERE id = powerId) = userId;
+#    SET valid = (SELECT user_id FROM powers WHERE id = powerId) = userId; 			# Original Squire Code, checks if user is allowed to update Feature
+     SET valid = 1; # Upddated to allow Feature edits for all users
 
     IF valid THEN
         UPDATE powers
@@ -62,7 +63,8 @@ BEGIN
             area_of_effect_id = areaOfEffectId, radius = radiusValue, width = widthValue, height = heightValue, length = lengthValue,
             recharge_min = rechargeMin, recharge_max = rechargeMax, recharge_on_short_rest = rechargeOnShortRest,
             recharge_on_long_rest = rechargeOnLongRest, version = version + 1
-        WHERE user_id = userId AND id = powerId;
+#       WHERE user_id = userId AND id = powerId;                                    # Original Squire Code, checks if user is allowed to update Feature
+        WHERE id = powerId; # Upddated to allow Feature edits for all users
 
         UPDATE features
         SET character_level_id = characterLevelId, characteristic_type_id = characteristicTypeId, characteristic_id = characteristicId,
