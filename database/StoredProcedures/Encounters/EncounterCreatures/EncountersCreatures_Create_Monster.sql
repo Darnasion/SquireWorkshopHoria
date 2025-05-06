@@ -24,7 +24,7 @@ BEGIN
 
     START TRANSACTION;
 
-    SET valid = (SELECT user_id FROM encounters WHERE id = encounterId) = userId;
+    SET valid = (SELECT user_id FROM encounters WHERE id = encounterId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         INSERT INTO encounter_creatures (encounter_id, encounter_creature_type_id, initiative, round_added, `order`, surprised)

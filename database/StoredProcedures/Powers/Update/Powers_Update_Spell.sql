@@ -52,9 +52,7 @@ BEGIN
 
 #     START TRANSACTION;
 
-#    SET valid = (SELECT user_id FROM powers WHERE id = powerId) = userId; 			# Original Squire Code, checks if user is allowed to update Feature
-     SET valid = 1; # Updated to allow Feature edits for all users
-
+    SET valid = (SELECT user_id FROM powers WHERE id = powerId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
     IF valid THEN
         UPDATE powers
         SET name = powerName, attack_type = attackType, temporary_hp = temporaryHp, attack_mod = attackMod, save_type_id = saveTypeId,
@@ -63,8 +61,7 @@ BEGIN
             modifier_advancement = modifierAdvancement, range_type = rangeType, `range` = rangeValue, range_unit = rangeUnit,
             area_of_effect_id = areaOfEffectId, radius = radiusValue, width = widthValue, height = heightValue, length = lengthValue,
             version = version + 1
-#       WHERE user_id = userId AND id = powerId;                                    # Original Squire Code, checks if user is allowed to update Feature
-        WHERE id = powerId; # Updated to allow Feature edits for all users
+        WHERE (user_id = userId Or userId = 19) AND power_id = powerId;         # (user_id = userId Or userId = 19), edited by Mark
 
         UPDATE spells
         SET level = levelValue, spell_school_id = spellSchoolId, ritual = isRitual, casting_time = castingTime,

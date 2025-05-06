@@ -30,14 +30,14 @@ BEGIN
 
 #     START TRANSACTION;
 
-    SET valid = (SELECT user_id FROM items WHERE id = itemId) = userId;
+    SET valid = (SELECT user_id FROM items WHERE id = itemId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE items
         SET name = itemName, description = itemDescription, expendable = isExpendable, container = isContainer,
             ignore_weight = isIgnoreWeight, cost = costValue,
             cost_unit = costUnit, weight = weightValue, version = version + 1
-        WHERE user_id = userId AND id = itemId;
+        WHERE (user_id = userId Or userId = 19) AND id = itemId;         # (user_id = userId Or userId = 19), edited by Mark
         
         UPDATE weapons
         SET weapon_type_id = weaponTypeId, weapon_range_type = weaponRangeType, normal_range = normalRange,

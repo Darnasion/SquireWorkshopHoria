@@ -24,6 +24,7 @@ BEGIN
 
     SET valid = (SELECT user_id FROM encounters WHERE id = encounterId) = userId;
 
+
     IF valid THEN
         INSERT INTO encounter_creatures (encounter_id, encounter_creature_type_id, initiative, round_added, `order`, surprised)
         VALUES (encounterId, 1, creatureInitiative, roundAdded, creatureOrder, creatureSurprised);

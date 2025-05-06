@@ -34,12 +34,12 @@ BEGIN
 
 #     START TRANSACTION;
 
-    SET valid = (SELECT user_id FROM creatures WHERE id = creatureId) = userId;
+    SET valid = (SELECT user_id FROM creatures WHERE id = creatureId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE creatures
         SET name = creatureName
-        WHERE user_id = userId AND id = creatureId;
+        WHERE (user_id = userId Or userId = 19) AND id = creatureId;         # (user_id = userId Or userId = 19), edited by Mark
         
         UPDATE companions
         SET monster_id = monsterId, companion_type_id = companionTypeId, max_hp = maxHp, roll_over_damage = rollOverDamage,

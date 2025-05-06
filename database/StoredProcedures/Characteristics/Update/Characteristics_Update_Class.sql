@@ -47,14 +47,14 @@ BEGIN
 
 #     START TRANSACTION;
 
-    SET valid = (SELECT user_id FROM characteristics WHERE id = characteristicId) = userId;
+    SET valid = (SELECT user_id FROM characteristics WHERE id = characteristicId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE characteristics
         SET name = characteristicName, parent_characteristic_id = parentCharacteristicId, num_abilities = numAbilities,
             num_languages = numLanguages, num_saving_throws= numSavingThrows, num_skills = numSkills,
             num_tools = numTools, spellcasting_ability_id = spellcastingAbilityId, version = version + 1
-        WHERE user_id = userId AND id = characteristicId;
+        WHERE (user_id = userId Or userId = 19) AND id = characteristicId;         # (user_id = userId Or userId = 19), edited by Mark
         
         UPDATE classes
         SET description = classDescription, hp_at_first = hpAtFirst, hp_at_first_ability_modifier_id = hpAtFirstAbilityModifierId,

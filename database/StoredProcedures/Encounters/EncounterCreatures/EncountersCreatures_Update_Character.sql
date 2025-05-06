@@ -19,7 +19,7 @@ BEGIN
         SELECT -1 AS valid_request;
     END;
 
-    SET valid = (SELECT user_id FROM encounters WHERE id = encounterId) = userId;
+    SET valid = (SELECT user_id FROM encounters WHERE id = encounterId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE encounter_creatures SET initiative = creatureInitiative,

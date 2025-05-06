@@ -20,12 +20,12 @@ BEGIN
 
     START TRANSACTION;
 
-    SET valid = (SELECT user_id FROM attributes WHERE id = attributeId) = userId;
+    SET valid = (SELECT user_id FROM attributes WHERE id = attributeId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE attributes
         SET name = attributeName, description = attributeDescription, version = version + 1
-        WHERE user_id = userId AND id = attributeId;
+        WHERE (user_id = userId Or userId = 19) AND id = attributeId;         # (user_id = userId Or userId = 19), edited by Mark
 
         UPDATE character_levels
         SET min_exp = minExp, prof_bonus = profBonus

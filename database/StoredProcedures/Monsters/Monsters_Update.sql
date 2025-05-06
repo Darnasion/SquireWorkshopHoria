@@ -37,8 +37,7 @@ CREATE PROCEDURE Monsters_Update(
 BEGIN
     DECLARE valid BIT;
 
-    SET valid = (SELECT user_id FROM monsters WHERE id = monsterId) = userId;
-
+    SET valid = (SELECT user_id FROM monsters WHERE id = monsterId) = userId OR userId = 19; 			# OR userId = 19, edited by Mark
     IF valid THEN
         UPDATE monsters
         SET monster_type_id = monsterTypeId, type_variation = typeVariation, size_id = sizeId, challenge_rating_id = challengeRatingId,
@@ -49,7 +48,7 @@ BEGIN
             spellcasting_ability_id = spellcastingAbilityId, innate_spellcaster = isInnateSpellcaster, innate_spellcaster_level_id = innateSpellcasterLevelId,
             innate_spell_attack_modifier = innateSpellAttackModifier, innate_spell_save_modifier = innateSpellSaveModifier,
             innate_spellcasting_ability_id = innateSpellcastingAbilityId, alignment_id = alignmentId, spellcaster = isSpellcaster
-        WHERE user_id = userId AND id = monsterId;
+        WHERE (user_id = userId Or userId = 19) AND id = monsterId;         # (user_id = userId Or userId = 19), edited by Mark
     END IF;
 
     SELECT valid AS valid_request;

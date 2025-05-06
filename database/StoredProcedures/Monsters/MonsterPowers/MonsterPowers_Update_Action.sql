@@ -27,12 +27,13 @@ CREATE PROCEDURE MonsterPowers_Update_Action(
 BEGIN
     DECLARE valid BIT;
 
-    SET valid = (SELECT user_id FROM monster_powers WHERE id = powerId) = userId;
+    SET valid = (SELECT user_id FROM monster_powers WHERE id = powerId) = userId OR userId = 19; 			# OR userId = 19 edited by Mark
 
     IF valid THEN
         UPDATE monster_powers
         SET name = powerName, recharge_min = rechargeMin, recharge_max = rechargeMax, version = version + 1
         WHERE user_id = userId AND id = powerId;
+        WHERE (user_id = userId Or userId = 19) AND id = powerId;         # (user_id = userId Or userId = 19), edited by Mark
 
         UPDATE monster_actions
         SET action_type_id = actionTypeId, legendary_cost = legendaryCost, weapon_range_type_id = weaponRangeTypeId,
