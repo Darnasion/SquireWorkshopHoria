@@ -1,8 +1,0 @@
-<div *ngIf="editing || item.expendable">
-  <mat-checkbox
-    (change)="expendableChange($event)"
-    [disabled]="!editing"
-    [checked]="item.expendable">
-  </mat-checkbox>
-  <span>{{ 'Expendable' | translate }}</span>
-</div>

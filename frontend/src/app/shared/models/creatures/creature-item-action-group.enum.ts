@@ -1,5 +1,0 @@
-export enum CreatureItemActionGroup {
-  ACTIONS = 'ACTIONS',
-  MAGICAL_ACTIONS = 'MAGICAL_ACTIONS',
-  PROPERTIES = 'PROPERTIES'
-}
