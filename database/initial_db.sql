@@ -6687,7 +6687,7 @@ DROP TABLE IF EXISTS `user_settings`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_settings` (
   `user_id` mediumint unsigned NOT NULL,
-  `allow_admin_access` bit(1) NOT NULL b'1',
+  `allow_admin_access` bit(1) NOT NULL,
   `language` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `subscribed` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`user_id`),
