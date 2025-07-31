@@ -60,7 +60,7 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
   providers: [
     {
       provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: '6LffOJQrAAAAAKmvhUWysilNZ_TuEelOMHptkvrT' } as RecaptchaSettings,
+      useValue: { siteKey: '6LfZw5UrAAAAAGLMe9J2hqmlt4-brnBbQNPp6W4T' } as RecaptchaSettings,
     },
     {
       provide: RECAPTCHA_LANGUAGE,
