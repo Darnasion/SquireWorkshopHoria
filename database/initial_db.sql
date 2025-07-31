@@ -6687,7 +6687,7 @@ DROP TABLE IF EXISTS `user_settings`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_settings` (
   `user_id` mediumint unsigned NOT NULL,
-  `allow_admin_access` bit(1) NOT NULL DEFAULT b'1',
+  `allow_admin_access` bit(1) NOT NULL b'1',
   `language` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `subscribed` bit(1) NOT NULL DEFAULT b'1',
   PRIMARY KEY (`user_id`),
@@ -6979,7 +6979,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (19,'Admin','30aec06bb212a53f0d76974ef73dd822ac37e58f0ca2d273349c84b28d73c372','lkL6rGV98G','darnasion@gmail.com',_binary '\0','2025-04-25 10:09:59',0,_binary '\0',_binary '\0','BASIC',_binary '\0');
+INSERT INTO `users` VALUES (19,'darnas','30aec06bb212a53f0d76974ef73dd822ac37e58f0ca2d273349c84b28d73c372','lkL6rGV98G','darnasion@gmail.com',_binary '\0','2025-04-25 10:09:59',0,_binary '\0',_binary '\0','BASIC',_binary '\0');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
