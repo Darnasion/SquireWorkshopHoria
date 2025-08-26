@@ -151,7 +151,6 @@ describe('LoginComponent', () => {
   it('should error with Unknown Error', () => {
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'login').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
