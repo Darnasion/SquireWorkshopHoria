@@ -29,6 +29,13 @@ export class UnlockAccountComponent implements OnInit {
     this.formUnlockAccount = this.createUnlockAccountForm();
   }
 
+  createUnlockAccountForm(): FormGroup {
+    return this.fb.group(
+      {
+
+      }
+    );
+  }
 
   unlockAccount(): void {
     this.loading = true;
