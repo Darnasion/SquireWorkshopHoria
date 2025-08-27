@@ -15,11 +15,7 @@
 
     </div>
 
-    <!--<form [formGroup]="loginForm">-->
-      <!--<re-captcha formControlName="recaptcha"></re-captcha>-->
-    <!--</form>-->
 
-    <!--<br>-->
   <div class="form-group">
     <button [disabled]="loginForm.invalid || loading" class="squire-button btn btn-primary">{{ 'Auth.Login.Login' | translate }}</button>
     <a [routerLink]="['/auth/forgotUsername']" class="squire-button btn btn-link">{{ 'Auth.ForgotUsername' | translate }}</a>
