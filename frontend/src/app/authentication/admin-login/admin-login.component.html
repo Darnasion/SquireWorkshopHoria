@@ -19,9 +19,7 @@
       <input id="username" maxlength="20" formControlName="username" type="text" class="form-control">
     </div>
 
-    <form [formGroup]="adminLoginForm">
-      <re-captcha formControlName="recaptcha"></re-captcha>
-    </form>
+
     <br>
     <div class="form-group">
       <button [disabled]="adminLoginForm.invalid || loading" class="squire-button btn btn-primary">{{ 'Auth.Login.Login' | translate }}</button>

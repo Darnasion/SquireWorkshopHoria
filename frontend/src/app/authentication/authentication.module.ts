@@ -22,8 +22,6 @@ import {TranslateModule} from '@ngx-translate/core';
 import {NgxLocalizedNumbers} from 'ngx-localized-numbers';
 import { HomeComponent } from './home/home.component';
 import {ShowHidePasswordModule} from 'ngx-show-hide-password';
-import {RECAPTCHA_LANGUAGE, RECAPTCHA_SETTINGS, RecaptchaModule, RecaptchaSettings} from 'ng-recaptcha';
-import {RecaptchaFormsModule} from 'ng-recaptcha/forms';
 import {AngularSvgIconModule} from 'angular-svg-icon';
 
 @NgModule({
@@ -39,8 +37,6 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
         TranslateModule,
         NgxLocalizedNumbers,
         ReactiveFormsModule,
-        RecaptchaModule,
-        RecaptchaFormsModule,
         ShowHidePasswordModule,
         AngularSvgIconModule
     ],
@@ -57,16 +53,6 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
     HomeComponent
   ],
   exports: [],
-  providers: [
-    {
-      provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: '6LfZw5UrAAAAAGLMe9J2hqmlt4-brnBbQNPp6W4T' } as RecaptchaSettings,
-    },
-    {
-      provide: RECAPTCHA_LANGUAGE,
-      useValue: 'en'
-    }
-  ]
 })
 export class AuthenticationModule {
 }

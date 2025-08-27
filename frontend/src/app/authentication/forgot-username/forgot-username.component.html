@@ -8,10 +8,6 @@
       <input id="email" formControlName="email" type="email" class="form-control">
     </div>
 
-    <form [formGroup]="forgotUsernameForm">
-      <re-captcha formControlName="recaptcha"></re-captcha>
-    </form>
-    <br>
 
     <div class="form-group">
       <button [disabled]="forgotUsernameForm.invalid || loading" class="squire-button btn btn-primary">{{ 'Submit' | translate }}</button>

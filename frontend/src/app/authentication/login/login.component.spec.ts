@@ -68,7 +68,6 @@ describe('LoginComponent', () => {
   it('should not login when the username is blank', () => {
     component.loginForm.controls['username'].setErrors({'incorrect': true});
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     expect(component.loginForm.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'login').and.stub();
     component.login();
@@ -78,17 +77,6 @@ describe('LoginComponent', () => {
   it('should not login when the password is blank', () => {
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors({'incorrect': true});
-    component.loginForm.controls['recaptcha'].setErrors(null);
-    expect(component.loginForm.valid).toBeFalsy();
-    const spy = spyOn(authenticationService, 'login').and.stub();
-    component.login();
-    expect(spy).not.toHaveBeenCalled();
-  });
-
-  it('should not login when the recaptcha is blank', () => {
-    component.loginForm.controls['username'].setErrors(null);
-    component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors({'incorrect': true});
     expect(component.loginForm.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'login').and.stub();
     component.login();
@@ -105,7 +93,6 @@ describe('LoginComponent', () => {
 
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     expect(component.loginForm.valid).toBeTruthy();
 
     const spy = spyOn(authenticationService, 'login').and.returnValue(of(res));
@@ -129,7 +116,6 @@ describe('LoginComponent', () => {
 
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     expect(component.loginForm.valid).toBeTruthy();
 
     const spy = spyOn(notificationService, 'info').and.stub();
@@ -151,7 +137,6 @@ describe('LoginComponent', () => {
   it('should error with Unknown Error', () => {
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'login').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -163,7 +148,6 @@ describe('LoginComponent', () => {
   it('should error with Invalid Username or Password', () => {
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Invalid Username or Password'};
     spyOn(authenticationService, 'login').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -175,7 +159,6 @@ describe('LoginComponent', () => {
   it('should error with Account Locked', () => {
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Account locked'};
     spyOn(authenticationService, 'login').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -187,7 +170,6 @@ describe('LoginComponent', () => {
   it('should error with Email Not Validated', () => {
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Email not validated'};
     spyOn(authenticationService, 'login').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -199,7 +181,6 @@ describe('LoginComponent', () => {
   it('should error with the message supplied', () => {
     component.loginForm.controls['username'].setErrors(null);
     component.loginForm.controls['password'].setErrors(null);
-    component.loginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'message supplied'};
     spyOn(authenticationService, 'login').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();

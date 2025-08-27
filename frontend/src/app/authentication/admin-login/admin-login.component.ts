@@ -44,7 +44,6 @@ export class AdminLoginComponent implements OnInit {
         adminUsername: [null, Validators.compose([Validators.required])],
         adminPassword: [null, Validators.compose([Validators.required])],
         username: [null, Validators.compose([Validators.required])],
-        recaptcha: ['', Validators.required]
       }
     );
   }

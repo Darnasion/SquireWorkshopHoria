@@ -69,7 +69,6 @@ describe('UnlockAccountComponent', () => {
 
   it('should submit when the form is valid', () => {
     component.routeParams.unlockToken = 'unlockToken';
-    component.formUnlockAccount.controls['recaptcha'].setErrors(null);
     expect(component.formUnlockAccount.valid).toBeTruthy();
     const spy = spyOn(authenticationService, 'unlockAccount').and.returnValue(of('success'));
     spyOn(router, 'navigate').and.stub();
@@ -80,7 +79,6 @@ describe('UnlockAccountComponent', () => {
 
   it('should error with Unknown Error', () => {
     component.routeParams.unlockToken = 'unlockToken';
-    component.formUnlockAccount.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'unlockAccount').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -91,7 +89,6 @@ describe('UnlockAccountComponent', () => {
 
   it('should error with Invalid Token', () => {
     component.routeParams.unlockToken = null;
-    component.formUnlockAccount.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'unlockAccount').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -110,7 +107,6 @@ describe('UnlockAccountComponent', () => {
     runs.forEach(function (run) {
       it(run.desc, () => {
         component.routeParams.unlockToken = 'unlockToken';
-        component.formUnlockAccount.controls['recaptcha'].setErrors(null);
         const error = {error: run.desc};
         spyOn(authenticationService, 'unlockAccount').and.returnValue(throwError(error));
         spyOn(router, 'navigate').and.stub();

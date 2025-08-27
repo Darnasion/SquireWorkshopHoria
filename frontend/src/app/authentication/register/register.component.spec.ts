@@ -63,7 +63,6 @@ describe('RegisterComponent', () => {
     component.formRegister.controls['email'].setErrors(null);
     component.formRegister.controls['password'].setErrors(null);
     component.formRegister.controls['confirmPassword'].setErrors(null);
-    component.formRegister.controls['recaptcha'].setErrors(null);
     expect(component.formRegister.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'register').and.stub();
     component.register();
@@ -75,7 +74,6 @@ describe('RegisterComponent', () => {
     component.formRegister.controls['email'].setErrors({'incorrect': true});
     component.formRegister.controls['password'].setErrors(null);
     component.formRegister.controls['confirmPassword'].setErrors(null);
-    component.formRegister.controls['recaptcha'].setErrors(null);
     expect(component.formRegister.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'register').and.stub();
     component.register();
@@ -87,7 +85,6 @@ describe('RegisterComponent', () => {
     component.formRegister.controls['email'].setErrors(null);
     component.formRegister.controls['password'].setErrors({'incorrect': true});
     component.formRegister.controls['confirmPassword'].setErrors(null);
-    component.formRegister.controls['recaptcha'].setErrors(null);
     expect(component.formRegister.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'register').and.stub();
     component.register();
@@ -99,31 +96,18 @@ describe('RegisterComponent', () => {
     component.formRegister.controls['email'].setErrors(null);
     component.formRegister.controls['password'].setErrors(null);
     component.formRegister.controls['confirmPassword'].setErrors({'incorrect': true});
-    component.formRegister.controls['recaptcha'].setErrors(null);
     expect(component.formRegister.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'register').and.stub();
     component.register();
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should not submit when the recaptcha is invalid', () => {
-    component.formRegister.controls['username'].setErrors(null);
-    component.formRegister.controls['email'].setErrors(null);
-    component.formRegister.controls['password'].setErrors(null);
-    component.formRegister.controls['confirmPassword'].setErrors(null);
-    component.formRegister.controls['recaptcha'].setErrors({'incorrect': true});
-    expect(component.formRegister.valid).toBeFalsy();
-    const spy = spyOn(authenticationService, 'register').and.stub();
-    component.register();
-    expect(spy).not.toHaveBeenCalled();
-  });
 
   it('should submit when the form is valid', () => {
     component.formRegister.controls['username'].setErrors(null);
     component.formRegister.controls['email'].setErrors(null);
     component.formRegister.controls['password'].setErrors(null);
     component.formRegister.controls['confirmPassword'].setErrors(null);
-    component.formRegister.controls['recaptcha'].setErrors(null);
     expect(component.formRegister.valid).toBeTruthy();
     const spy = spyOn(authenticationService, 'register').and.returnValue(of('success'));
     spyOn(router, 'navigate').and.stub();
@@ -137,7 +121,6 @@ describe('RegisterComponent', () => {
     component.formRegister.controls['email'].setErrors(null);
     component.formRegister.controls['password'].setErrors(null);
     component.formRegister.controls['confirmPassword'].setErrors(null);
-    component.formRegister.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'register').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -163,7 +146,6 @@ describe('RegisterComponent', () => {
         component.formRegister.controls['email'].setErrors(null);
         component.formRegister.controls['password'].setErrors(null);
         component.formRegister.controls['confirmPassword'].setErrors(null);
-        component.formRegister.controls['recaptcha'].setErrors(null);
         const error = {error: run.desc};
         spyOn(authenticationService, 'register').and.returnValue(throwError(error));
         spyOn(router, 'navigate').and.stub();
@@ -179,7 +161,6 @@ describe('RegisterComponent', () => {
     component.formRegister.controls['email'].setErrors(null);
     component.formRegister.controls['password'].setErrors(null);
     component.formRegister.controls['confirmPassword'].setErrors(null);
-    component.formRegister.controls['recaptcha'].setErrors(null);
     const error = {error: 'message supplied'};
     spyOn(authenticationService, 'register').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();

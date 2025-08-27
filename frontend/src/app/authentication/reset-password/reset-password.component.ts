@@ -52,7 +52,6 @@ export class ResetPasswordComponent implements OnInit {
           ])
         ],
         confirmPassword: [null, Validators.compose([Validators.required])],
-        recaptcha: ['', Validators.required]
       },
       {
         // check whether our password and confirm password match

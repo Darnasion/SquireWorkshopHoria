@@ -62,25 +62,15 @@ describe('ForgotUsernameComponent', () => {
 
   it('should not submit when the email is blank', () => {
     component.forgotUsernameForm.controls['email'].setErrors({'incorrect': true});
-    component.forgotUsernameForm.controls['recaptcha'].setErrors(null);
     expect(component.forgotUsernameForm.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'forgotUsername').and.stub();
     component.submit();
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should not submit when the recaptcha is blank', () => {
-    component.forgotUsernameForm.controls['email'].setErrors(null);
-    component.forgotUsernameForm.controls['recaptcha'].setErrors({'incorrect': true});
-    expect(component.forgotUsernameForm.valid).toBeFalsy();
-    const spy = spyOn(authenticationService, 'forgotUsername').and.stub();
-    component.submit();
-    expect(spy).not.toHaveBeenCalled();
-  });
 
   it('should submit when the form is valid', () => {
     component.forgotUsernameForm.controls['email'].setErrors(null);
-    component.forgotUsernameForm.controls['recaptcha'].setErrors(null);
     expect(component.forgotUsernameForm.valid).toBeTruthy();
     const spy = spyOn(authenticationService, 'forgotUsername').and.returnValue(of('success'));
     spyOn(router, 'navigate').and.stub();
@@ -91,7 +81,6 @@ describe('ForgotUsernameComponent', () => {
 
   it('should error with Unknown Error', () => {
     component.forgotUsernameForm.controls['email'].setErrors(null);
-    component.forgotUsernameForm.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'forgotUsername').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -102,7 +91,6 @@ describe('ForgotUsernameComponent', () => {
 
   it('should error with Invalid email', () => {
     component.forgotUsernameForm.controls['email'].setErrors(null);
-    component.forgotUsernameForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Invalid email'};
     spyOn(authenticationService, 'forgotUsername').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -113,7 +101,6 @@ describe('ForgotUsernameComponent', () => {
 
   it('should error with the message supplied', () => {
     component.forgotUsernameForm.controls['email'].setErrors(null);
-    component.forgotUsernameForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'message supplied'};
     spyOn(authenticationService, 'forgotUsername').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();

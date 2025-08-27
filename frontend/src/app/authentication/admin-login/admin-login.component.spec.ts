@@ -69,7 +69,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors({'incorrect': true});
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     expect(component.adminLoginForm.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'adminLogin').and.stub();
     component.login();
@@ -80,7 +79,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors({'incorrect': true});
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     expect(component.adminLoginForm.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'adminLogin').and.stub();
     component.login();
@@ -91,23 +89,12 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors({'incorrect': true});
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     expect(component.adminLoginForm.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'adminLogin').and.stub();
     component.login();
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('should not login when the recaptcha is blank', () => {
-    component.adminLoginForm.controls['adminUsername'].setErrors(null);
-    component.adminLoginForm.controls['adminPassword'].setErrors(null);
-    component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors({'incorrect': true});
-    expect(component.adminLoginForm.valid).toBeFalsy();
-    const spy = spyOn(authenticationService, 'adminLogin').and.stub();
-    component.login();
-    expect(spy).not.toHaveBeenCalled();
-  });
 
   it('should login when the form is valid', () => {
     localStorage.setItem('token', '');
@@ -120,7 +107,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     expect(component.adminLoginForm.valid).toBeTruthy();
 
     const spy = spyOn(authenticationService, 'adminLogin').and.returnValue(of(res));
@@ -139,7 +125,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     localStorage.setItem('token', '');
     spyOn(authenticationService, 'adminLogin').and.returnValue(throwError(error));
@@ -154,7 +139,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Invalid Username or Password'};
     localStorage.setItem('token', '');
     spyOn(authenticationService, 'adminLogin').and.returnValue(throwError(error));
@@ -169,7 +153,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Account locked'};
     localStorage.setItem('token', '');
     spyOn(authenticationService, 'adminLogin').and.returnValue(throwError(error));
@@ -184,7 +167,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Email not validated'};
     localStorage.setItem('token', '');
     spyOn(authenticationService, 'adminLogin').and.returnValue(throwError(error));
@@ -199,7 +181,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'User is not an admin'};
     localStorage.setItem('token', '');
     spyOn(authenticationService, 'adminLogin').and.returnValue(throwError(error));
@@ -214,7 +195,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'User revoked access'};
     localStorage.setItem('token', '');
     spyOn(authenticationService, 'adminLogin').and.returnValue(throwError(error));
@@ -229,7 +209,6 @@ describe('AdminLoginComponent', () => {
     component.adminLoginForm.controls['adminUsername'].setErrors(null);
     component.adminLoginForm.controls['adminPassword'].setErrors(null);
     component.adminLoginForm.controls['username'].setErrors(null);
-    component.adminLoginForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'message supplied'};
     localStorage.setItem('token', '');
     spyOn(authenticationService, 'adminLogin').and.returnValue(throwError(error));

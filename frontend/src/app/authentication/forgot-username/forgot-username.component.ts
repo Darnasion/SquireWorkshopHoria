@@ -30,7 +30,6 @@ export class ForgotUsernameComponent implements OnInit {
     return this.fb.group(
       {
         email: [null, Validators.compose([Validators.required])],
-        recaptcha: ['', Validators.required]
       }
     );
   }

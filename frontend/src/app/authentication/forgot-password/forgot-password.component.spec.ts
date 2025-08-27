@@ -61,16 +61,7 @@ describe('ForgotPasswordComponent', () => {
 
   it('should not submit when the email is blank', () => {
     component.forgotPasswordForm.controls['email'].setErrors({'incorrect': true});
-    component.forgotPasswordForm.controls['recaptcha'].setErrors(null);
-    expect(component.forgotPasswordForm.valid).toBeFalsy();
-    const spy = spyOn(authenticationService, 'forgotPassword').and.stub();
-    component.submit();
-    expect(spy).not.toHaveBeenCalled();
-  });
 
-  it('should not submit when the recaptcha is blank', () => {
-    component.forgotPasswordForm.controls['email'].setErrors(null);
-    component.forgotPasswordForm.controls['recaptcha'].setErrors({'incorrect': true});
     expect(component.forgotPasswordForm.valid).toBeFalsy();
     const spy = spyOn(authenticationService, 'forgotPassword').and.stub();
     component.submit();
@@ -79,7 +70,6 @@ describe('ForgotPasswordComponent', () => {
 
   it('should submit when the form is valid', () => {
     component.forgotPasswordForm.controls['email'].setErrors(null);
-    component.forgotPasswordForm.controls['recaptcha'].setErrors(null);
     expect(component.forgotPasswordForm.valid).toBeTruthy();
     const spy = spyOn(authenticationService, 'forgotPassword').and.returnValue(of('success'));
     spyOn(router, 'navigate').and.stub();
@@ -90,7 +80,6 @@ describe('ForgotPasswordComponent', () => {
 
   it('should error with Unknown Error', () => {
     component.forgotPasswordForm.controls['email'].setErrors(null);
-    component.forgotPasswordForm.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'forgotPassword').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -101,7 +90,6 @@ describe('ForgotPasswordComponent', () => {
 
   it('should error with Invalid email', () => {
     component.forgotPasswordForm.controls['email'].setErrors(null);
-    component.forgotPasswordForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'Invalid email'};
     spyOn(authenticationService, 'forgotPassword').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -112,7 +100,6 @@ describe('ForgotPasswordComponent', () => {
 
   it('should error with the message supplied', () => {
     component.forgotPasswordForm.controls['email'].setErrors(null);
-    component.forgotPasswordForm.controls['recaptcha'].setErrors(null);
     const error = {error: 'message supplied'};
     spyOn(authenticationService, 'forgotPassword').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();

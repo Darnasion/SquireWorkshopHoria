@@ -29,13 +29,6 @@ export class UnlockAccountComponent implements OnInit {
     this.formUnlockAccount = this.createUnlockAccountForm();
   }
 
-  createUnlockAccountForm(): FormGroup {
-    return this.fb.group(
-      {
-        recaptcha: ['', Validators.required]
-      }
-    );
-  }
 
   unlockAccount(): void {
     this.loading = true;

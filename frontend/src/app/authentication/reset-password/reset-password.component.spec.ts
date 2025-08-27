@@ -67,7 +67,6 @@ describe('ResetPasswordComponent', () => {
     component.routeParams.resetToken = 'resetToken';
     component.formResetPassword.controls['password'].setErrors(null);
     component.formResetPassword.controls['confirmPassword'].setErrors(null);
-    component.formResetPassword.controls['recaptcha'].setErrors(null);
     expect(component.formResetPassword.valid).toBeTruthy();
     const spy = spyOn(authenticationService, 'resetPassword').and.returnValue(of('success'));
     spyOn(router, 'navigate').and.stub();
@@ -80,7 +79,6 @@ describe('ResetPasswordComponent', () => {
     component.routeParams.resetToken = 'resetToken';
     component.formResetPassword.controls['password'].setErrors(null);
     component.formResetPassword.controls['confirmPassword'].setErrors(null);
-    component.formResetPassword.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'resetPassword').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -93,7 +91,6 @@ describe('ResetPasswordComponent', () => {
     component.routeParams.resetToken = null;
     component.formResetPassword.controls['password'].setErrors(null);
     component.formResetPassword.controls['confirmPassword'].setErrors(null);
-    component.formResetPassword.controls['recaptcha'].setErrors(null);
     const error = {error: {value: 'other'}};
     spyOn(authenticationService, 'resetPassword').and.returnValue(throwError(error));
     spyOn(router, 'navigate').and.stub();
@@ -116,7 +113,6 @@ describe('ResetPasswordComponent', () => {
         component.routeParams.resetToken = 'resetToken';
         component.formResetPassword.controls['password'].setErrors(null);
         component.formResetPassword.controls['confirmPassword'].setErrors(null);
-        component.formResetPassword.controls['recaptcha'].setErrors(null);
         const error = {error: run.desc};
         spyOn(authenticationService, 'resetPassword').and.returnValue(throwError(error));
         spyOn(router, 'navigate').and.stub();

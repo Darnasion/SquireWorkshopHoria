@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
       {
         username: [null, Validators.compose([Validators.required])],
         password: [null, Validators.compose([Validators.required])],
-       // recaptcha: ['', Validators.required]
       }
     );
   }

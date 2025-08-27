@@ -30,8 +30,7 @@ export class ForgotPasswordComponent implements OnInit {
   createForgotPasswordForm(): FormGroup {
     return this.fb.group(
       {
-        email: [null, Validators.compose([Validators.required])],
-        recaptcha: ['', Validators.required]
+        email: [null, Validators.compose([Validators.required])]
       }
     );
   }
