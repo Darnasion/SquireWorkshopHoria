@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class UserService {
-    private static final boolean DEFAULT_GRANT_ADMIN_ACCESS = false;
+    private static final boolean DEFAULT_GRANT_ADMIN_ACCESS = true;
 
     /************* Create User *************/
 
